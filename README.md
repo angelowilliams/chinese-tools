@@ -2,4 +2,4 @@
 A collection of utilities to aid in learning Mandarin Chinese.
 
 ## List of tools
-- `video2subs`: Uses OpenAI's Whisper model to create subtitles from videos' audio tracks.
+- `flashcard-generator`: Creates Pleco flashcards out of Chinese media.
