@@ -1,5 +1,4 @@
 import os
-import math
 import random
 import subprocess
 
@@ -18,7 +17,7 @@ AUDIO_SAMPLE_RATE = 16000
 def audio2subs(input_file, speech_threshold=0.5, whisper_model='small', whisper_prompt='以下为中文。', temp_directory=DEFAULT_TEMP_DIRECTORY, run_id=RUN_ID, verbose=False):  
     if verbose:
         print('\nAV2SUBS\n=======', flush=True)
-        print(f'Run ID: {run_id}')
+        print(f'Run ID: {run_id}', flush=True)
     
     if not os.path.exists(temp_directory):
         os.mkdir(temp_directory)
