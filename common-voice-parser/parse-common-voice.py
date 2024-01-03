@@ -1,5 +1,6 @@
 import os
 import shutil
+from mutagen.id3 import ID3NoHeaderError, ID3, COMM
 
 '''
 We expect other.tsv in common-voice to have the following schema:
@@ -41,7 +42,18 @@ def parse_common_voice(cv_index, cv_clips, new_audio_folder, practiced_audio_fol
         
         print(f'Added {clip_name}! Sentence is 『 {sentence} 』', flush=True)
         # Copy clip to new_audio_folder
-        shutil.copy(cv_clips + '/' + clip_name, new_audio_folder + '/' + clip_name)
+        output_file = new_audio_folder + '/' + clip_name
+        shutil.copy(cv_clips + '/' + clip_name, output_file)
+
+        # Adding lyrics
+        try: 
+            tags = ID3(output_file)
+        except ID3NoHeaderError:
+            print("Adding ID3 header")
+            tags = ID3()
+        
+        tags['COMM'] = COMM(encoding=3, lang=u'chi', desc='desc', text=sentence)
+        tags.save(output_file)
 
     index_file.close()
 
