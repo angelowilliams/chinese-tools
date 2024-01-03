@@ -183,14 +183,14 @@ if __name__ == '__main__':
     whisper_model = 'large-v2'
     whisper_prompt = '以下为中文。'
     threshold = 0.7
-    run_id = 497139
+    #run_id = 497139
     #temp_srt_files = [f'temp/{run_id}_chunked_audio_{i+1}.srt' for i in range(21)]
     #combineSubtitleFiles(temp_srt_files, run_id=run_id)
     audio2subs(input_file, 
                speech_threshold=threshold, 
                whisper_model=whisper_model, 
                whisper_prompt=whisper_prompt, 
-               run_id=run_id, 
+               run_id=RUN_ID, 
                verbose=True)
 
 
